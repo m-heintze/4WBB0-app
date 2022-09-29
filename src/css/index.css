@@ -1,0 +1,16 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    background-color: var(--c-bg);
+}
+
+main {
+    padding: 1rem;
+}
+
+html, body, main {
+    height: 100%;
+}

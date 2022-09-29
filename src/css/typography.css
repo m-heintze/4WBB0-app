@@ -1,0 +1,12 @@
+:root {
+    font-size: 16px;
+}
+
+body {
+    font-family: "Bubblegum Sans", cursive;
+    color: var(--c-text-light);
+}
+
+a {
+    color: var(--c-text-light);
+}
