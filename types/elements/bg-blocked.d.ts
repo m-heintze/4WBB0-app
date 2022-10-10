@@ -1,12 +1,12 @@
 import { LitElement } from 'lit';
-import "../elements/button";
-import "../elements/bg-blocked";
-export declare class PageHome extends LitElement {
+import "./scaling-container";
+import "./button";
+export declare class BgBlocked extends LitElement {
     render(): import("lit-html").TemplateResult<1>;
     static styles: import("lit").CSSResult[];
 }
 declare global {
     interface HTMLElementTagNameMap {
-        'page-home': PageHome;
+        'bg-blocked': BgBlocked;
     }
 }

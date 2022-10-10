@@ -5,23 +5,39 @@ import { customElement, property } from "lit/decorators.js";
 export class AppButton extends LitElement {
     @property()
     red: boolean = false;
+    @property()
+    img: string | undefined = undefined;
 
     render() {
         return html`
-        <button class="${this.red ? "red" : ""}" >
-            <slot></slot>
-        </button>
+            ${this.img ? html`<img src="${this.img}" alt="image">` : ""}
+            <button class="${this.red ? "red" : ""}">
+                <slot></slot>
+            </button>
       `;
     }
 
     static styles = css`
+        * {
+            box-sizing: border-box;
+        }
+
         :host {
-            display: block;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            position: relative;
             width: 100%;
             height: 100%;
             min-height: 6rem;
-            max-height: 8rem;
+            max-height: 10rem;
+        }
 
+        img {
+            margin-bottom: -2rem;
+            height: 4rem;
+            z-index: 1;
         }
         
         button {

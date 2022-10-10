@@ -15,9 +15,9 @@ export class PageHome extends LitElement {
             <div class="column">
                 <h1>Water Savers</h1>
 
-                <app-button @click="${() => { window.location.pathname = "/challenges" }}">Challenges</app-button>
-                <app-button>Prizes</app-button>    
-                <app-button>Numbers</app-button>
+                <app-button @click="${() => { window.location.pathname = "/challenges" }}" img="/toothbrush.png">Challenges</app-button>
+                <app-button img="/prizes.png">Prizes</app-button>    
+                <app-button img="/numbers.png">Numbers</app-button>
             </div>
         `
     }
