@@ -1,8 +1,8 @@
 import { html, css, LitElement } from 'lit'
 import { customElement } from 'lit/decorators.js'
 
-import "../elements/scaling-container";
 import "../elements/button";
+import "../elements/bg-blocked";
 import { layoutClasses } from "../css/layout-classes";
 
 
@@ -10,27 +10,14 @@ import { layoutClasses } from "../css/layout-classes";
 export class PageHome extends LitElement {
     render() {
         return html`
-            <!-- <scaling-container style="max-height: 3rem">
-                <h1>Home! Hello Nicolas</h1>
-            </scaling-container>
-            <scaling-container>
-                <app-button @click="${() => { window.location.pathname = "/challenges" }}">Challenges</app-button>
-            </scaling-container>
-            <scaling-container>
-                <app-button>Prizes</app-button>
-            </scaling-container>
-            <scaling-container>
-                <app-button>Numbers</app-button>
-            </scaling-container> -->
+            <bg-blocked></bg-blocked>
 
             <div class="column">
-                <h1>Home</h1>
+                <h1>Water Savers</h1>
 
                 <app-button @click="${() => { window.location.pathname = "/challenges" }}">Challenges</app-button>
                 <app-button>Prizes</app-button>    
                 <app-button>Numbers</app-button>
-                <div>
-                </div>
             </div>
         `
     }
@@ -38,6 +25,18 @@ export class PageHome extends LitElement {
     static styles = [
         layoutClasses,
         css`
+            * {
+                box-sizing: border-box;
+            }
+            :host {
+                display: block;
+                height: 100%;
+            }
+
+            .column {
+                padding: 1rem;
+            }
+
             app-button + app-button {
                 margin-top: 2rem;
             }

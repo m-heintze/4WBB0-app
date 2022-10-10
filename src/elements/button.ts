@@ -1,11 +1,14 @@
 import { LitElement, html, css } from "lit";
-import { customElement } from "lit/decorators.js";
+import { customElement, property } from "lit/decorators.js";
 
 @customElement("app-button")
 export class AppButton extends LitElement {
+    @property()
+    red: boolean = false;
+
     render() {
         return html`
-        <button>
+        <button class="${this.red ? "red" : ""}" >
             <slot></slot>
         </button>
       `;
@@ -36,6 +39,11 @@ export class AppButton extends LitElement {
             background-color: var(--c-btn-bg);
 
             box-shadow: 0 .25rem .25rem 0 rgba(0,0,0,.25)
+        }
+
+        button.red {
+            background-color: var(--c-btn-bg-red);
+            color: var(--c-text-light);
         }
     `
 }

@@ -1,6 +1,8 @@
 :root {
     --c-text-light: #ececec;
     --c-bg: #5463FF;
+    --c-bg-alt: #668CFF;
     --c-btn-bg: #FFC300;
+    --c-btn-bg-red: #FF1818;
     --c-text-btn: #1A160D;
 }

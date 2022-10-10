@@ -7,10 +7,6 @@ body {
     background-color: var(--c-bg);
 }
 
-main {
-    padding: 1rem;
-}
-
 html, body, main {
     height: 100%;
 }
