@@ -3,7 +3,7 @@ import { VersionedCache } from "./cache/versioned-cache";
 
 // @ts-ignore
 const s: ServiceWorkerGlobalScope = self as ServiceWorkerGlobalScope;
-const VERSION = 'v0.0.20';
+const VERSION = 'v0.0.21';
 
 const vc = new VersionedCache("app", VERSION)
 

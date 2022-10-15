@@ -1,26 +1,26 @@
-import { css, html, LitElement } from 'lit'
+import { html, css, LitElement } from 'lit'
 import { customElement } from 'lit/decorators.js'
 import { Router } from "@vaadin/router";
 
 import "../elements/button";
-import "../elements/bg-blocked";
+import "../elements/bg-toothbrush";
 import { layoutClasses } from "../css/layout-classes";
 
 
-@customElement('page-challenges')
-export class PageChallenges extends LitElement {
+@customElement('page-challenge-teeth')
+export class PageChallengeTeeth extends LitElement {
     render() {
         return html`
-            <bg-blocked></bg-blocked>
+            <bg-toothbrush></bg-toothbrush>
 
             <div class="column">
-                <h1>Challenges</h1>
+                <h1>Brush your teeth</h1>
 
-                <app-button @click="${() => { Router.go("/challenges/teeth") }}" img="/toothbrush.png">Teeth</app-button>
-                <app-button>Challenge 2</app-button>    
-                <app-button>Challenge 3</app-button>
+                <h2>Placeholder for the emoji calendar.</h2>
 
-                <app-button red=true @click="${() => { Router.go("/") }}">Back</app-button>
+                <!-- TODO: Create page that should appear when clicking the start button. -->
+                <app-button @click="${() => { Router.go("/challenges/teeth/active") }}">Start!</app-button>
+                <app-button red=true @click="${() => { Router.go("/challenges") }}">Back</app-button>
             </div>
         `
     }
@@ -49,6 +49,6 @@ export class PageChallenges extends LitElement {
 
 declare global {
     interface HTMLElementTagNameMap {
-        'page-challenges': PageChallenges
+        'page-challenge-teeth': PageChallengeTeeth
     }
 }

@@ -3,22 +3,25 @@ import { customElement } from 'lit/decorators.js'
 import { Router } from "@vaadin/router";
 
 import "../elements/button";
-import "../elements/bg-blocked";
+import "../elements/bg-toothbrush";
+import "../elements/water-meter";
 import { layoutClasses } from "../css/layout-classes";
 
 
-@customElement('page-home')
-export class PageHome extends LitElement {
+@customElement('page-challenge-teeth-active')
+export class PageChallengeTeethActive extends LitElement {
     render() {
         return html`
-            <bg-blocked></bg-blocked>
+            <bg-toothbrush></bg-toothbrush>
 
             <div class="column">
-                <h1>Water Savers</h1>
+                <h1>Brush your teeth</h1>
 
-                <app-button @click="${() => { Router.go("/challenges") }}" img="/toothbrush.png">Challenges</app-button>
-                <app-button img="/prizes.png">Prizes</app-button>    
-                <app-button img="/numbers.png">Numbers</app-button>
+                <water-meter></water-meter>
+
+                <!-- TODO: Create page that should appear when clicking the finished button. -->
+                <app-button @click="${() => { Router.go("/challenges/teeth/active") }}">Finished!</app-button>
+                <app-button red=true @click="${() => { Router.go("/challenges/teeth") }}">Stop</app-button>
             </div>
         `
     }
@@ -41,12 +44,16 @@ export class PageHome extends LitElement {
             app-button + app-button {
                 margin-top: 2rem;
             }
+
+            water-meter {
+                margin: 2rem 0;
+            }
         `
     ]
 }
 
 declare global {
     interface HTMLElementTagNameMap {
-        'page-home': PageHome
+        'page-challenge-teeth-active': PageChallengeTeethActive
     }
 }

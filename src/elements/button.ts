@@ -31,6 +31,7 @@ export class AppButton extends LitElement {
             width: 100%;
             height: 100%;
             min-height: 6rem;
+            /* TODO: Smaller max-heigth if no image is used. (because it looks better) */
             max-height: 10rem;
         }
 
