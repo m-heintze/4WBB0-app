@@ -1,13 +1,13 @@
 import { LitElement } from 'lit';
 import "../elements/button";
-import "../elements/bg-blocked";
-export declare class PageHome extends LitElement {
+import "../elements/bg-toothbrush";
+import "../elements/water-meter";
+export declare class PageChallengeTeethActive extends LitElement {
     render(): import("lit-html").TemplateResult<1>;
-    testRequest(): Promise<void>;
     static styles: import("lit").CSSResult[];
 }
 declare global {
     interface HTMLElementTagNameMap {
-        'page-home': PageHome;
+        'page-challenge-teeth-active': PageChallengeTeethActive;
     }
 }

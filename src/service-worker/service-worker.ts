@@ -3,7 +3,8 @@ import { VersionedCache } from "./cache/versioned-cache";
 
 // @ts-ignore
 const s: ServiceWorkerGlobalScope = self as ServiceWorkerGlobalScope;
-const VERSION = 'v0.0.21';
+const VERSION = 'v0.0.26';
+const DEVICE_IP = '192.186.4.1';
 
 const vc = new VersionedCache("app", VERSION)
 
@@ -18,6 +19,11 @@ s.addEventListener("fetch", async event => {
  * @returns The answer to the request.
  */
 async function fetchEventHandler(event: FetchEvent) {
+    if (event.request.url.includes(DEVICE_IP)) {
+        console.log("[SW] URL exception, not using cache for:", event.request.url)
+        return await fetch(event.request)
+    }
+
     return cacheFirst(vc, event.request)
 }
 
