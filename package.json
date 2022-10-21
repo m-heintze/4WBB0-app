@@ -15,7 +15,8 @@
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build",
-    "preview": "vite build && vite preview"
+    "preview": "vite build && vite preview",
+    "preview.public": "vite build && vite preview --host"
   },
   "dependencies": {
     "@vaadin/router": "^1.7.4",

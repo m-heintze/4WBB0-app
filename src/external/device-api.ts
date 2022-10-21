@@ -1,8 +1,10 @@
-export class DeviceAPI {
+export class DeviceAPI extends EventTarget {
     baseUrl: string
     es: EventSource | undefined
+    isConnecting: boolean = false;
 
     constructor(baseUrl: string) {
+        super()
         this.baseUrl = new URL(baseUrl).toString()
         this.createEventSource()
     }
@@ -19,8 +21,10 @@ export class DeviceAPI {
     }
 
     async toggleSolenoid(): Promise<boolean> {
-        const requestUrl = new URL('api/toggle_solenoid', this.baseUrl)
+        console.log("Toggling solenoid")
+        const requestUrl = new URL('api/solenoid/close', this.baseUrl)
         const response = await fetch(requestUrl);
+        console.log("Got respo")
 
         if (await response.text() === "OK") {
             return true
@@ -30,10 +34,13 @@ export class DeviceAPI {
     }
 
     createEventSource() {
-        this.es = new EventSource(new URL('api/events', this.baseUrl))
-        this.registerEventHandlers()
+        if (this.isConnecting) { return };
 
+        this.es = new EventSource(new URL('api/events', this.baseUrl))
         console.log("Created a new EventSource.")
+     
+        this.registerEventHandlers()
+        this.isConnecting = false;
     }
 
     private async registerEventHandlers() {
@@ -44,16 +51,33 @@ export class DeviceAPI {
 
         this.es.onerror = () => {
             console.log("An error occured in the EventSource, creating a new one to reconnect.")
-            this.createEventSource()
+            if (this.isConnecting) {
+                console.log("Nevermind, reconnection process was already starting.")
+                return
+            }
+
+            this.isConnecting = true
+
+            setTimeout(() => {
+                this.createEventSource()
+            }, 3000);
         }
 
         this.es.addEventListener('system', event => {
-            console.log("[ES] systen", event.data);
+            console.log("[ES] system", event.data);
+            this.dispatchEvent(new CustomEvent("system", JSON.parse(event.data)))
         });
         
         this.es.addEventListener('solenoid', event => {
             console.log("[ES] solenoid", event.data);
+            this.dispatchEvent(new CustomEvent("solenoid", JSON.parse(event.data)))
         });
+        
+        this.es.addEventListener('flow', event => {
+            console.log("[ES] flow", event.data);
+            this.dispatchEvent(new CustomEvent("flow", {detail: JSON.parse(event.data)} ))
+        });
+        
         
         console.log("Registerd all handlers")
     }
