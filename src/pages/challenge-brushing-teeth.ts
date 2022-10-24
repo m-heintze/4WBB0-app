@@ -16,7 +16,8 @@ export class PageChallengeTeeth extends LitElement {
             <div class="column">
                 <h1>Brush your teeth</h1>
 
-                <h2>Placeholder for the emoji calendar.</h2>
+                <!-- <h2>Placeholder for the emoji calendar.</h2> -->
+                <img src="/calendar.png">
 
                 <!-- TODO: Create page that should appear when clicking the start button. -->
                 <app-button @click="${() => { Router.go("/challenges/teeth/active") }}">Start!</app-button>
@@ -42,6 +43,12 @@ export class PageChallengeTeeth extends LitElement {
 
             app-button + app-button {
                 margin-top: 2rem;
+            }
+
+            img {
+                display: block;
+                padding-top: 2rem;
+                padding-bottom: 4rem;
             }
         `
     ]

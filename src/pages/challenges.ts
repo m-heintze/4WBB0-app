@@ -17,8 +17,8 @@ export class PageChallenges extends LitElement {
                 <h1>Challenges</h1>
 
                 <app-button @click="${() => { Router.go("/challenges/teeth") }}" img="/toothbrush.png">Teeth</app-button>
-                <app-button>Challenge 2</app-button>    
-                <app-button>Challenge 3</app-button>
+                <app-button img="/washing-hands.png">Hands</app-button>    
+                <!-- <app-button>Challenge 3</app-button> -->
 
                 <app-button red=true @click="${() => { Router.go("/") }}">Back</app-button>
             </div>

@@ -19,8 +19,7 @@ export class PageChallengeTeethActive extends LitElement {
 
                 <water-meter></water-meter>
 
-                <!-- TODO: Create page that should appear when clicking the finished button. -->
-                <app-button @click="${() => { Router.go("/challenges/teeth/active") }}">Finished!</app-button>
+                <app-button @click="${() => { Router.go("/challenge/done?p=" + window.sessionStorage.getItem("percentage")); window.sessionStorage.setItem("percentage", "0") }}">Finished!</app-button>
                 <app-button red=true @click="${() => { Router.go("/challenges/teeth") }}">Stop</app-button>
             </div>
         `

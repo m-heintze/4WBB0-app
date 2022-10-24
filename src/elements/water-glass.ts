@@ -4,8 +4,22 @@ import { DeviceAPI } from "../external/device-api"
 
 @customElement('water-glass')
 export class WaterGlass extends LitElement {
+    // @property()
+    // _percentageFilled: number = 0;
+
+    private _percentageFilled: number = 0;
+
+    set percentageFilled(p: number) {
+        let oldVal = this._percentageFilled
+        this._percentageFilled = p
+        this.requestUpdate('percentageFilled', oldVal)
+
+        window.sessionStorage.setItem("percentage", this._percentageFilled.toString())
+    }
+
     @property()
-    percentageFilled: number = 0;
+    get percentageFilled() { return this._percentageFilled }
+
 
     deviceAPI: DeviceAPI
 
@@ -14,7 +28,7 @@ export class WaterGlass extends LitElement {
 
         this.deviceAPI = new DeviceAPI('http://192.168.4.1')
         this.deviceAPI.addEventListener("flow", (ev: any) => {
-            this.percentageFilled += ev.detail.delta * 100
+            this._percentageFilled += ev.detail.delta * 100
             console.log(ev.detail.delta)
         })
     }
@@ -64,8 +78,8 @@ export class WaterGlass extends LitElement {
 
     render() {
         return html`
-            <!-- <div class="container" @click="${() => this.percentageFilled -= -5}"> -->
-            <div class="container" @click="${async () => {console.log(await this.deviceAPI.toggleSolenoid()); console.log("click")}}">
+            <div class="container" @click="${() => this.percentageFilled -= -5}">
+            <!-- <div class="container" @click="${async () => {console.log(await this.deviceAPI.toggleSolenoid()); console.log("click")}}"> -->
                 <div class="water" style="height: ${Math.min(this.percentageFilled, 100)}%;"></div>
                 <div class="glass"></div>
             </div>

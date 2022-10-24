@@ -14,7 +14,7 @@ export class PageHome extends LitElement {
             <bg-blocked></bg-blocked>
 
             <div class="column">
-                <h1>Water Savers</h1>
+                <h1>H<sub>2</sub>kn0w</h1>
 
                 <app-button @click="${() => { Router.go("/challenges") }}" img="/toothbrush.png">Challenges</app-button>
                 <app-button img="/prizes.png">Prizes</app-button>    

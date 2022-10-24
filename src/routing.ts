@@ -9,6 +9,7 @@ function initRouter() {
         { path: "/challenges", component: "page-challenges", action: () => { import("./pages/challenges") } },
         { path: "/challenges/teeth", component: "page-challenge-teeth", action: () => { import("./pages/challenge-brushing-teeth") } },
         { path: "/challenges/teeth/active", component: "page-challenge-teeth-active", action: () => { import("./pages/challenge-brushing-teeth-active") } },
+        { path: "/challenge/done", component: "page-challenge-done", action: () => { import("./pages/challenge-done") } },
     ])
 }
 
