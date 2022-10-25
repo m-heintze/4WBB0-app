@@ -1,7 +1,9 @@
 import { LitElement } from 'lit';
 import { DeviceAPI } from "../external/device-api";
 export declare class WaterGlass extends LitElement {
-    percentageFilled: number;
+    private _percentageFilled;
+    set percentageFilled(p: number);
+    get percentageFilled(): number;
     deviceAPI: DeviceAPI;
     constructor();
     static styles: import("lit").CSSResult[];

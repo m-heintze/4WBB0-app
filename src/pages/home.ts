@@ -14,7 +14,8 @@ export class PageHome extends LitElement {
             <bg-blocked></bg-blocked>
 
             <div class="column">
-                <h1>H<sub>2</sub>kn0w</h1>
+                <!-- <h1>H<sub>2</sub>kn0w</h1> -->
+                <img src="/logo.png">
 
                 <app-button @click="${() => { Router.go("/challenges") }}" img="/toothbrush.png">Challenges</app-button>
                 <app-button img="/prizes.png">Prizes</app-button>    
@@ -40,6 +41,14 @@ export class PageHome extends LitElement {
 
             app-button + app-button {
                 margin-top: 2rem;
+            }
+
+            img {
+                display: block;
+                width: 10rem;
+                height: auto;
+                margin: 0 auto;
+                padding: 1.5rem 0;
             }
         `
     ]
