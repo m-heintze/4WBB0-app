@@ -15,6 +15,7 @@ export class WaterGlass extends LitElement {
         this.requestUpdate('percentageFilled', oldVal)
 
         window.sessionStorage.setItem("percentage", this._percentageFilled.toString())
+        console.log("called")
     }
 
     @property()
@@ -28,7 +29,7 @@ export class WaterGlass extends LitElement {
 
         this.deviceAPI = new DeviceAPI('http://192.168.4.1')
         this.deviceAPI.addEventListener("flow", (ev: any) => {
-            this._percentageFilled += ev.detail.delta * 100
+            this.percentageFilled += ev.detail.delta * 100
             console.log(ev.detail.delta)
         })
     }
